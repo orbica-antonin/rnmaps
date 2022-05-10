@@ -975,7 +975,20 @@ public class RCTMGLMapView extends MapView implements OnMapReadyCallback, Mapbox
         AndroidCallbackEvent event = new AndroidCallbackEvent(this, callbackID, payload);
         mManager.handleEvent(event);
     }
+    private double getDirectionForUserLocationUpdate() {
+        // NOTE: The direction of this is used for map rotation only, not location layer rotation
+        CameraPosition currentCamera = mMapView.getCameraPosition();
+        double direction = currentCamera.bearing;
 
+        // int userTrackingMode = mUserLocation.getTrackingMode();
+        // if (userTrackingMode == UserTrackingMode.FollowWithHeading || userTrackingMode == UserTrackingMode.FollowWithCourse) {
+        //     direction = mUserLocation.getBearing();
+        // } else if (mHeading != 0.0) {
+        //     direction = mHeading;
+        // }
+
+        return direction;
+    }
     public void getPointInView(String callbackID, LatLng mapCoordinate) {
 
         PointF pointInView = mMap.getProjection().toScreenLocation(mapCoordinate);

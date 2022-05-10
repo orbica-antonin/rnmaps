@@ -225,7 +225,7 @@ public class RCTMGLMapViewManager extends AbstractEventEmitter<RCTMGLMapView> {
     public static final int METHOD_SET_HANDLED_MAP_EVENTS = 10;
     public static final int METHOD_SHOW_ATTRIBUTION = 11;
     public static final int METHOD_SET_SOURCE_VISIBILITY = 12;
-
+    public static final int METHOD_GET_DIRECTION = 22;
     @Nullable
     @Override
     public Map<String, Integer> getCommandsMap() {
@@ -233,6 +233,7 @@ public class RCTMGLMapViewManager extends AbstractEventEmitter<RCTMGLMapView> {
                 .put("queryRenderedFeaturesAtPoint", METHOD_QUERY_FEATURES_POINT)
                 .put("queryRenderedFeaturesInRect", METHOD_QUERY_FEATURES_RECT)
                 .put("getVisibleBounds", METHOD_VISIBLE_BOUNDS)
+                .put("getDirectionForUserLocationUpdate",METHOD_GET_DIRECTION)
                 .put("getPointInView", METHOD_GET_POINT_IN_VIEW)
                 .put("getCoordinateFromView", METHOD_GET_COORDINATE_FROM_VIEW)
                 .put("takeSnap", METHOD_TAKE_SNAP)
@@ -271,6 +272,8 @@ public class RCTMGLMapViewManager extends AbstractEventEmitter<RCTMGLMapView> {
             case METHOD_VISIBLE_BOUNDS:
                 mapView.getVisibleBounds(args.getString(0));
                 break;
+            case METHOD_GET_DIRECTION:
+                mapView.getDirectionForUserLocationUpdate(args.getString(0));
             case METHOD_GET_POINT_IN_VIEW:
                 mapView.getPointInView(args.getString(0), GeoJSONUtils.toLatLng(args.getArray(1)));
                 break;

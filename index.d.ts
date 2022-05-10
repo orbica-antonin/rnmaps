@@ -216,6 +216,7 @@ declare namespace MapboxGL {
    */
   class MapView extends Component<MapViewProps> {
     getPointInView(coordinate: GeoJSON.Position): Promise<GeoJSON.Position>;
+    getDirectionForUserLocationUpdate():promise <number>;
     getCoordinateFromView(point: GeoJSON.Position): Promise<GeoJSON.Position>;
     getVisibleBounds(): Promise<GeoJSON.Position[]>;
     queryRenderedFeaturesAtPoint(
