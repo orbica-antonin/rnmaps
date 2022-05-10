@@ -409,6 +409,20 @@ class MapView extends NativeBridgeComponent(React.Component) {
     }
   }
 
+
+  
+  /**
+   * Added to get the bearing
+   */
+
+  async getDirectionForUserLocationUpdate() {
+    const res = await this._runNativeCommand('getDirectionForUserLocationUpdate');
+    return res;
+  }
+
+
+
+
   /**
    * Converts a geographic coordinate to a point in the given view’s coordinate system.
    *
